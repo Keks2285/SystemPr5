@@ -14,7 +14,7 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        byte[] buffer;
+        byte[] buffer={0};
         bool ArduinoConnected = false;
         public Form1()
         {
@@ -123,10 +123,10 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        public void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             serialPort1.Read(buffer, 0, 1);
-            if (buffer[0] != 0)
+            if (buffer[0] == 1)
             {
                 DialogResult result = MessageBox.Show
                     ("Кажется у нас гости",

@@ -71,7 +71,7 @@ namespace WindowsFormsApp1
         {
             if (ArduinoConnected)
             {
-                serialPort1.Write("1"); //выключить п1
+                serialPort1.Write("P1OFF"); //выключить п1
             }
         }
 
@@ -79,7 +79,7 @@ namespace WindowsFormsApp1
         {
             if (ArduinoConnected)
             {
-                serialPort1.Write("0");
+                serialPort1.Write("P1ON");
             }
         }
 
@@ -103,7 +103,7 @@ namespace WindowsFormsApp1
         {
             if (ArduinoConnected)
             {
-                serialPort1.Write("10"); // включить п2
+                serialPort1.Write("P2ON"); // включить п2
             }
         }
 
@@ -111,7 +111,7 @@ namespace WindowsFormsApp1
         {
             if (ArduinoConnected)
             {
-                serialPort1.Write("11");
+                serialPort1.Write("P2OFF");
             }
         }
 
@@ -119,14 +119,14 @@ namespace WindowsFormsApp1
         {
             if (ArduinoConnected)
             {
-                serialPort1.Write("110");
+                serialPort1.Write("SOUNDOFF");
             }
         }
 
         public void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             string a = serialPort1.ReadLine();
-            if (a!=null)
+            if (a =="SIGNAL")
             {
                 DialogResult result = MessageBox.Show
                     ("Кажется у нас гости",
@@ -141,7 +141,7 @@ namespace WindowsFormsApp1
                 {
                     if (ArduinoConnected)
                     {
-                        serialPort1.Write("111");
+                        serialPort1.Write("SOUNDON");
                     }
                 }
 

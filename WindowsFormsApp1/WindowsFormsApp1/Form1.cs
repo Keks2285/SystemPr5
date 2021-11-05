@@ -125,8 +125,8 @@ namespace WindowsFormsApp1
 
         public void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            serialPort1.Read(buffer, 0, 1);
-            if (buffer[0] == 1)
+            string a = serialPort1.ReadLine();
+            if (a!=null)
             {
                 DialogResult result = MessageBox.Show
                     ("Кажется у нас гости",
